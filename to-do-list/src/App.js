@@ -4,7 +4,11 @@ import Task from './components/Task';
 import TaskForm from './components/TaskForm';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  var listOfTasks = JSON.parse(localStorage.getItem("list"));
+  if (listOfTasks === null) {
+    listOfTasks = []
+  }
+  const [tasks, setTasks] = useState(listOfTasks);
   return (
     <div className="App container">
       {tasks.map((task, i) => (

@@ -4,11 +4,14 @@ const Task = (props) => {
     const {task, setTasks, index, tasks} = props;
     const clickHandler = () => {
         setTasks(() => {
+            const list = tasks.filter(task => tasks.indexOf(task) !== index);
+            localStorage.setItem('list', JSON.stringify(list));
             return tasks.filter(task => tasks.indexOf(task) !== index)
         });
     };
     const changeHandler = () => {
         tasks[index].isComplete = !tasks[index].isComplete;
+        localStorage.setItem('list', JSON.stringify([...tasks]));
         return setTasks([...tasks]);
     }
 

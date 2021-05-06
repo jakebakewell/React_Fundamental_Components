@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const TaskForm = (props) => {
     const {tasks, setTasks} = props;
@@ -10,6 +10,7 @@ const TaskForm = (props) => {
         setTasks(
             [...tasks, task]
         );
+        localStorage.setItem('list', JSON.stringify(tasks));
     }
     const changeHandler = (e) => {
         task.taskName = e.target.value;
